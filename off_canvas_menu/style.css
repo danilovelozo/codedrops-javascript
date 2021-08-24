@@ -1,0 +1,159 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+button:active {
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  font: normal 16px/1.5 Helvetica, sans-serif;
+}
+
+.screen-reader-text {
+  postion: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.top-banner {
+  display: flex;
+  width: calc(100% - 60px);
+  height: 100vh;
+  transform: translateX(60px);
+  background: url(https://images.unsplash.com/photo-1517433247151-80815904f4b6?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ) no-repeat center / cover;
+}
+
+.top-banner-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 350px;
+  padding: 20px;
+  transition: transform 0.4s;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+
+  &.is-moved {
+    transform: translateX(350px);
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 100%;
+      width: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+}
+
+.top-nav {
+  li + li {
+    margin-top: 8px;
+  }
+  .menu-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    padding: 20px;
+    transform: translateX(-350px);
+    transition: tranform 0.4s;
+    background: #A0F0ED;
+
+    &.is-opened {
+      transform: translateX(60px);
+      width: 350px;
+
+      .menu {
+        opacity: 1;
+        transition-delay: 0.4s;
+      }
+
+      a { font-size: 1.2rem; }
+    }
+  }
+
+  .menu {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .sub-menu {
+    padding: 10px 0 0 8px;
+  }
+
+  .menu-close {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 1.6rem;
+  }
+
+  .fixed-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    padding: 20px;
+    color: #20504F;
+    background: #64D5CA;
+
+    .menu-open {
+      display: inline-flex;
+      align-items: center;
+      text-align: left;
+      margin: 0 0 auto;
+      width: auto;
+      cursor: pointer;
+      color: #20504F;
+
+      svg { fill: #20504F; }
+
+      &:hover, &:focus {
+        opacity: 0.9;
+      }
+    }
+    .menu-icon { margin-right: 10px; }
+  }
+}
+
+.social-links svg {
+  fill: #20504F;
+}
